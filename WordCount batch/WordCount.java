@@ -22,14 +22,8 @@ import org.apache.flink.api.common.functions.FlatMapFunction;
 import org.apache.flink.api.common.serialization.SimpleStringEncoder;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.configuration.MemorySize;
-/*import org.apache.flink.connector.file.sink.FileSink;
-import org.apache.flink.connector.file.src.FileSource;
-import org.apache.flink.connector.file.src.reader.TextLineInputFormat;*/
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
-/*import org.apache.flink.streaming.api.functions.sink.filesystem.rollingpolicies.DefaultRollingPolicy;
-import org.apache.flink.streaming.examples.wordcount.util.CLI;
-import org.apache.flink.streaming.examples.wordcount.util.WordCountData;*/
 import org.apache.flink.util.Collector;
 
 import java.time.Duration;
@@ -54,15 +48,8 @@ public class WordCount {
                         .name("counter");
 
         counts.writeAsCsv("/home/kaifu/Downloads/testoutput.txt");
-
-        // Apache Flink applications are composed lazily. Calling execute
-        // submits the Job and begins processing.
         env.execute("WordCount");
     }
-
-    // *************************************************************************
-    // USER FUNCTIONS
-    // *************************************************************************
 
     /**
      * Implements the string tokenizer that splits sentences into words as a user-defined
